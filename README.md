@@ -2,6 +2,7 @@
 Repository for Coursera course "Getting and Cleaning Data" course project
 
 Author: Jie Cao
+
 Date: Nov 2, 2020
 
 ## Description
@@ -26,7 +27,7 @@ Execution of the analysis code in this repository will complete following tasks,
 
 2. Move the zipped file to your desired working directory and unzip the downloaded file. 
 
-3. Save the R script run_analysis.R in your desired working directory, execute it.
+3. Save the R script [run_analysis.R](https://github.com/caojie528/Getting_and_Cleaning_Data_Course_Project/blob/main/run_analysis.R) in your desired working directory, execute it.
 
 4. The executed code should generate a tidydata.txt file in your working directory, and the file should be same as the one provided in this repository.
 
