@@ -21,6 +21,16 @@ Execution of the analysis code in this repository will complete following tasks,
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+## File description
+
+[README.md](https://github.com/caojie528/Getting_and_Cleaning_Data_Course_Project/blob/main/README.md): Overview of the repository, description of each file, instruction for running the R script to generate the tidy data.
+
+[run_analysis.R](https://github.com/caojie528/Getting_and_Cleaning_Data_Course_Project/blob/main/run_analysis.R): The R script that can be used to generate the tidy dataset (`tidydata.txt`) as instructed in the course project. 
+
+[CodeBook.md](https://github.com/caojie528/Getting_and_Cleaning_Data_Course_Project/blob/main/CodeBook.md): Description of the original dataset, data cleaning and transfomation steps done, overview of the obtained tidy data, and variable list of the obtained tidy data. 
+
+[tidydata.txt](https://github.com/caojie528/Getting_and_Cleaning_Data_Course_Project/blob/main/tidydata.txt): The final tidy data obtained as a result of executing the `run_analysis.R` script. The dataset has column names, but no row names. 
+
 ## Instruction
 
 1. Download [the signal data](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip). The data represent data collected from the accelerometers from the Samsung Galaxy S smartphone. For more information about the data, please go to [UCI data repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
