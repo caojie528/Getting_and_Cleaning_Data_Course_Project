@@ -29,6 +29,7 @@ subj_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 # Read feature names
 feature_names <- read.table("./UCI HAR Dataset/features.txt", 
                        col.names = c("index", "featurename"))
+selected_feats <- grep("(mean|std)\\(\\)", feature_names$featurename)
 feature_names$featurename <- gsub("[()]", "", feature_names$featurename)
 feature_names$featurename <- gsub("-", "_", feature_names$featurename)
 
@@ -36,25 +37,23 @@ feature_names$featurename <- gsub("-", "_", feature_names$featurename)
 activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt",
                               col.names = c("class", "activity"))
 
-# Merges training and test, add descriptive names for features
-train <- cbind(subj_train, Y_train, X_train)
-names(train) <- c("subject", "activity", as.character(feature_names$featurename))
-test <- cbind(subj_test, Y_test, X_test)
-names(test) <- c("subject", "activity", as.character(feature_names$featurename))
-combined <- rbind(train, test)
+# Merges training and test, selected wanted features
+train <- cbind(subj_train, Y_train, X_train[, selected_feats])
+test <- cbind(subj_test, Y_test, X_test[, selected_feats])
 
-# Select wanted features (mean and standard deviation measurements)
-selected_feats <- grep("_mean_|_std_", names(train))
-selected_combined <- combined[, c(1, 2, selected_feats)]
+# Add descriptive names for features
+combined <- rbind(train, test)
+names(combined) <- c("subject", "activity", 
+                     as.character(feature_names$featurename[selected_feats]))
 
 # Use descriptive names for activity (class)
-selected_combined$activity <- factor(selected_combined$activity, 
-                                     levels = activity_labels$class, 
-                                     labels = activity_labels$activity)
+combined$activity <- factor(combined$activity, 
+                            levels = activity_labels$class, 
+                            labels = activity_labels$activity)
 
 # Create a tidy data with the average of each variable 
 # for each activity and each subject
-avg_feats <- selected_combined %>% 
+avg_feats <- combined %>% 
   group_by(activity, subject) %>% 
   summarise_all(list(mean = mean))
 
